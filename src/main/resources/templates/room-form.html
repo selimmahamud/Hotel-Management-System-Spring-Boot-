@@ -1,0 +1,230 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body m-5 col-12 col-md-11 col-lg-11">
+                        <h3 th:if="${hid==null}" class="card-title text-center mt-2">Add Room</h3>
+                        <h3 th:if="${hid!=null}" class="card-title text-center mt-2">Update Room</h3>
+
+                        <form th:action="@{/add_room}" th:object="${room}" method="post" class="needs-validation"
+                              novalidate="">
+                            <input type="hidden" th:field="*{rId}"/>
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <div class="col-sm-12  col-md-12">
+                                        <label>Hotel Name</label>
+                                        <div>
+                                            <select class="form-select form-control" aria-label="Default select example"
+                                                    th:field="*{hotel}">
+                                                <option th:each="h:${hotellist}" th:value="${h.hid}" th:text="${h.hname}">--Select--
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                           <br> <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Title</label>
+                                    <input type="text" class="form-control" th:field="*{rTitle}" required=""/>
+                                    <div class="invalid-feedback">
+                                        What's your name?
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12   col-form-label">Galary</label>
+                                    <input type="file" class="form-control" id="site-favicon" th:field="*{rGallery}"/>
+                                    <div class="form-text text-muted">The image must have a maximum size of 1MB</div>
+                                </div>
+                            </div>
+                            <!--                            name and logo end-->
+
+
+                            <br><div class="row">
+                                <div class="col-sm-4  col-md-4">
+                                    <label class="col-sm-12  col-form-label">Room Size</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control phone-number" th:field="*{rRoomSize}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            room Price  need !!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4  col-md-4">
+                                    <label class="col-sm-12  col-form-label">Total Bed</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control phone-number" th:field="*{rBedNumber}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            room size  need !!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4  col-md-4">
+                                    <label class="col-sm-12  col-form-label">Available Room</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control phone-number" th:field="*{rAvailableRoom}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            input the field !!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--                            Room size, Cheldren capacity and adult capacity-->
+                            <br> <div class="row">
+                                <div class="col-sm-4  col-md-4">
+                                    <label class="col-sm-12  col-form-label">Room Price</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control phone-number" th:field="*{rRoomPrice}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                             room Price  need !!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4  col-md-4">
+                                    <label class="col-sm-12  col-form-label">Children Capacity</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control phone-number" th:field="*{rChildrenNumber}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            room size  need !!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4  col-md-4">
+                                    <label class="col-sm-12  col-form-label">Adult Capacity</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control phone-number" th:field="*{rAdultNumber}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            room size  need !!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br> <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Room Description</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control " th:field="*{rDescription}" required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            discription need!!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Room Address</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control " th:field="*{rRoomAddress}" required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            Enter your real address!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br> <div class="row">
+                                <div class="col-sm-12  col-md-12">
+                                    <label>Details</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control " th:field="*{rDetails}"
+                                                  required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            Enter hotel description!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br> <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <div class="col-sm-12  col-md-12">
+                                        <label>Room Type</label>
+                                        <div>
+                                            <select class="form-select form-control" aria-label="Default select example"
+                                                    th:field="*{roomtype}">
+                                                <option th:each="d:${roomtypelist}" th:value="${d.rtid}" th:text="${d.rtName}">--Select--
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <div class="col-sm-12  col-md-12">
+                                        <label>Room Facilities</label>
+                                        <div>
+                                            <select class="form-select form-control" aria-label="Default select example"
+                                                    th:field="*{roomFacilities}" multiple>
+                                                <option th:each="d:${roomfaclist}" th:value="${d.rfId}" th:text="${d.rfName}">--Select--
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>   <div class="row mb-3 text-center">
+                                <label class="col-sm-6 col-form-label"></label>
+                                <div class="col-sm-12">
+                                    <button th:if="${rId==null}"  type="submit" class="btn btn-primary ">Submit Form</button>
+                                    <button th:if="${rId!=null}"  type="submit" class="btn btn-primary ">Update Form</button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+</div>
+<!-- End app main Content -->
+<div th:insert=" footer.html">...</div>

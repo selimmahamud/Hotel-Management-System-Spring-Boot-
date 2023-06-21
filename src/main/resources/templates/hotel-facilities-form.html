@@ -1,0 +1,80 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body m-5 col-md-11 col-sm-11">
+                        <h3 th:if="${hfacid==null}" class="card-title text-center mt-2">Add Hotel Facilities</h3>
+                        <h3 th:if="${hfacid!=null}" class="card-title text-center mt-2">Update Hotel Facilities</h3>
+                        <p class="text-center text-white bg-success" th:text="${messege}"></p>
+                        <form th:action="@{/add_h_facilities}" th:object="${hfacilities}" method="post" class="needs-validation"
+                              novalidate="">
+                            <input type="hidden" th:field="*{hfacid}"/>
+                            <div class="col-sm-12  col-md-12">
+                                <label class="col-sm-12  col-form-label">Facilities Name</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" th:field="*{hfacname}" required=""/>
+                                    <div class="invalid-feedback">
+                                        Write hare hotel facilities name!!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12  col-md-12">
+                                <label class="col-sm-12  col-form-label">Description</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fa fa-paperclip"></i>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control " th:field="*{hfacdiscription}"
+                                              required=""></textarea>
+                                    <div class="invalid-feedback">
+                                        Description is required!!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12  col-md-12">
+                                <label class="col-sm-12  col-form-label">Keyword</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            <i class="fas fa-phone"></i>
+                                        </div>
+                                    </div>
+                                    <input type="text" class="form-control" th:field="*{hfackeyword}" required=""/>
+                                    <div class="invalid-feedback">
+                                        Write hare facilities keyword!!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12  col-md-12 text-center">
+                                <label class="col-sm-12  col-form-label"></label>
+                                <div>
+                                    <button th:if="${hfacid==null}" type="submit" class="btn btn-primary ">Submit
+                                    </button>
+                                    <button th:if="${hfacid!=null}" type="submit" class="btn btn-primary ">Update
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End app main Content -->
+
+
+<div th:insert=" footer.html">...</div>

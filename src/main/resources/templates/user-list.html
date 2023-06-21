@@ -1,0 +1,48 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body   col">
+                        <h3 class="text-center">All User</h3>
+                        <!-- Default Table -->
+                        <table class="table ">
+                            <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Cell</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Password</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="uList : ${userList}">
+                                <td th:text="${uList.uId}"></td>
+                                <td th:text="${uList.uName}"></td>
+                                <td th:text="${uList.uAddress}"></td>
+                                <td th:text="${uList.uCell}"></td>
+                                <td th:text="${uList.uEmail}"></td>
+                                <td th:text="${uList.ePassword}"></td>
+                                <td>
+                                    <a th:href="@{'/user-delete/'+${uList.uId}}" class="btn btn-danger">Delete</a>
+                                    <a th:href="@{'/user-edit/'+${uList.uId}}" class="btn btn-success">Update</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End app main Content -->
+<div th:insert=" footer.html">...</div>

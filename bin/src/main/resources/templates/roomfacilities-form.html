@@ -1,0 +1,66 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body m-5 col-md-12 col-sm-12">
+                        <h3 th:if="${rfId==null}" class="card-title text-center mt-2">Add Room Facilities</h3>
+                        <h3 th:if="${rfId!=null}" class="card-title text-center mt-2">Update Room Facilities</h3>
+
+                        <form th:action="@{/add_roomfacilities}" th:object="${rfList}" method="post" class="needs-validation"
+                              novalidate="">
+                            <input type="hidden" th:field="*{rfId}"/>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-2  col-md-2">
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Name</label>
+                                    <input type="text" class="form-control" th:field="*{rfName}" required=""/>
+                                    <div class="invalid-feedback">
+                                        What's facilities name!!
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-2  col-md-2">
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Description</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control " th:field="*{rfDescription}"
+                                                  required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            Add discription !!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 text-center">
+                                <label class="col-sm-6 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <button th:if="${rfId==null}" type="submit" class="btn btn-primary ">Submit Form
+                                    </button>
+                                    <button th:if="${rfId!=null}" type="submit" class="btn btn-primary ">Update Form
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End app main Content -->
+
+
+<div th:insert=" footer.html">...</div>

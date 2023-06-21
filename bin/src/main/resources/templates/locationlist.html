@@ -1,0 +1,49 @@
+
+        <div th:insert="header.html">...</div>
+        <div th:insert="sidebar.html">...</div>
+        <!-- Start app main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="row row-deck">
+                    <div class="col-md-12 ">
+                        <div class="card ">
+                            <div class="card-body  col-md-12 col-sm-12">
+                                <h3 class="text-center">All Location</h3>
+                                <!-- Default Table -->
+                                <table class="table col-sm-11  col-md-11">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Location Name</th>
+                                        <th scope="col">Zip Code</th>
+                                        <th scope="col">Country</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Photo</th>
+
+                                        <th scope="col" class="text-center">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="lList : ${locationList}">
+                                        <td th:text="${lList.lid}"></td>
+                                        <td th:text="${lList.lname}"></td>
+                                        <td th:text="${lList.lzipcode}"></td>
+                                        <td th:text="${lList.lcountry}"></td>
+                                        <td th:text="${lList.ldescription}"></td>
+                                        <td th:text="${lList.lphoto}"></td>
+                                        <td>
+                                            <a th:href="@{'/delete_location/'+${lList.lid}}" class="btn btn-danger">Delete</a>
+                                            <a th:href="@{'/update_location/'+${lList.lid}}" class="btn btn-success">Update</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!-- End Default Table Example -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- End app main Content -->
+        <div th:insert=" footer.html">...</div>

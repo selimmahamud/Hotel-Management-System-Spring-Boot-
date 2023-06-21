@@ -1,0 +1,57 @@
+
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+        <!-- Start app main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="row row-deck">
+                    <div class="col-md-12 ">
+                        <div class="card ">
+                            <div class="card-body m-5 col-md-12 col-sm-12">
+                                <h3 th:if="${iid==null}" class="card-title text-center mt-2">Add Inventory</h3>
+                                <h3 th:if="${iid!=null}" class="card-title text-center mt-2">Update Inventory</h3>
+
+                                <form th:action="@{/add_inventory}" th:object="${invList}" method="post" class="needs-validation"
+                                      novalidate="">
+                                    <input type="hidden" th:field="*{iid}"/>
+                                    <div class="row">
+                                        <div class="col-sm-2  col-md-2">
+                                        </div>
+                                        <div class="col-sm-6  col-md-6">
+                                            <label class="col-sm-12  col-form-label">Start Date</label>
+                                            <input type="date" class="form-control" th:field="*{istartDate}" required=""/>
+                                            <div class="invalid-feedback">
+                                               start date input here?
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-2  col-md-2">
+                                        </div>
+                                        <div class="col-sm-6  col-md-6">
+                                            <label class="col-sm-12  col-form-label">End Date</label>
+                                            <input type="date" class="form-control" th:field="*{iendDate}" required=""/>
+                                            <div class="invalid-feedback">
+                                               end date input here?
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 text-center">
+                                        <label class="col-sm-6 col-form-label"></label>
+                                        <div class="col-sm-10">
+                                            <button th:if="${iid==null}"  type="submit" class="btn btn-primary ">Submit Form</button>
+                                            <button th:if="${iid!=null}"  type="submit" class="btn btn-primary ">Update Form</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- End app main Content -->
+<div th:insert=" footer.html">...</div>

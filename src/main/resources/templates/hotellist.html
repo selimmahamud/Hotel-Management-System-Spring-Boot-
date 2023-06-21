@@ -1,0 +1,52 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body  col-md-12 col-sm-12">
+                        <h3 class="text-center">All Hotels</h3>
+                        <!-- Default Table -->
+                        <table class="table ">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Phone</th>
+                                <th scope="col">Website</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Photo</th>
+
+                                <th scope="col" class="text-center">Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="hlist:${hotelList}">
+                                <td th:text="${hlist.hid}"></td>
+                                <td th:text="${hlist.hname}"></td>
+                                <td th:text="${hlist.haddress}"></td>
+                                <td th:text="${hlist.hphone}"></td>
+                                <td th:text="${hlist.hwebsite}"></td>
+                                <td th:text="${hlist.location.lname}"></td>
+                                <td><img th:src="@{'http://localhost:8085/'+${hlist.hphoto}}"width="100px"/></td>
+
+
+                                <td>
+                                    <a th:href="@{'/delete_hotel/'+${hlist.hid}}" class="btn btn-danger">Delete</a>
+                                    <a th:href="@{'/update_hotel/'+${hlist.hid}}" class="btn btn-success">Update</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End app main Content -->
+<div th:insert=" footer.html">...</div>

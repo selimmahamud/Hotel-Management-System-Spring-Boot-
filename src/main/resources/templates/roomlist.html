@@ -1,0 +1,60 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+        <!-- Start app main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="row row-deck">
+                    <div class="col-md-12 ">
+                        <div class="card ">
+                            <div class="card-body   col">
+                                <h3 class="text-center">All Room</h3>
+                                <!-- Default Table -->
+                                <table class="table ">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Title</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">RoomAddress</th>
+                                        <th scope="col">RoomPrice</th>
+                                        <th scope="col">Discount</th>
+                                        <th scope="col">AdultNumber</th>
+                                        <th scope="col">ChildrenNumber</th>
+                                        <th scope="col">Availability</th>
+                                        <th scope="col">Room type</th>
+                                        <th scope="col" class="text-center">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="rList : ${roomlist}">
+                                        <td th:text="${rList.rId}"></td>
+                                        <td th:text="${rList.rTitle}"></td>
+                                        <td th:text="${rList.rDescription}"></td>
+                                        <td th:text="${rList.rRoomAddress}"></td>
+                                        <td th:text="${rList.rRoomPrice}"></td>
+                                        <td th:text="${rList.rDiscount}"></td>
+                                        <td th:text="${rList.rAdultNumber}"></td>
+                                        <td th:text="${rList.rChildrenNumber}"></td>
+                                        <td th:text="${rList.rAvailability}"></td>
+<!--                                        <td th:text="${rList.roomtype.rtName}"></td>-->
+                                        <td>
+                                            <a th:href="@{'/delete_room/'+${rList.rId}}" class="btn btn-danger">Delete</a>
+                                            <a th:href="@{'/update_room/'+${rList.rId}}" class="btn btn-success">Update</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!-- End Default Table Example -->
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+        <!-- End app main Content -->
+
+
+<div th:insert=" footer.html">...</div>

@@ -1,0 +1,156 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body m-5 col-12 col-md-11 col-lg-11">
+                        <h3 th:if="${hid==null}" class="card-title text-center mt-2">Add Location</h3>
+                        <h3 th:if="${hid!=null}" class="card-title text-center mt-2">Update Location</h3>
+
+                        <form th:action="@{/location_save}" th:object="${location}" method="post"
+                              class="needs-validation"
+                              novalidate="">
+                            <input type="hidden" th:field="*{lid}"/>
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Location Name</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" th:field="*{lname}" required=""/>
+                                        <div class="invalid-feedback">
+                                            What's your name?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12   col-form-label">Picture</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="file" class="form-control" id="site-favicon" th:field="*{lphoto}"/>
+                                    </div>
+                                    <div class="form-text text-muted">The image must have a maximum size of 1MB</div>
+                                </div>
+                            </div>
+                            <!--                            name and picture end-->
+
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Zip Code</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control" th:field="*{lzipcode}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            Write zip code!!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Country</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control " th:field="*{lcountry}" required=""/>
+                                        <div class="invalid-feedback">
+                                            Enter country!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Lat</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control " th:field="*{llat}" required="">
+                                        <div class="invalid-feedback">
+                                            Enter Lat!!
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Long</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control " th:field="*{llong}" required="">
+                                        <div class="invalid-feedback">
+                                            write long!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-sm-12  col-md-12">
+                                    <label>Description</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <textarea class="form-control " th:field="*{ldescription}"
+                                                  required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            Enter hotel description!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="row mb-3 text-center">
+                                <label class="col-sm-6 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <button th:if="${lid==null}" type="submit" class="btn btn-primary ">Submit
+                                        Form
+                                    </button>
+                                    <button th:if="${lid!=null}" type="submit" class="btn btn-primary ">Update
+                                        Form
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+</div>
+<!-- End app main Content -->
+<div th:insert=" footer.html">...</div>

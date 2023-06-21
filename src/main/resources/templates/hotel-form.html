@@ -1,0 +1,266 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body m-5 col-12 col-md-11 col-lg-11">
+                        <h3 th:if="${hid==null}" class="card-title text-center mt-2">Add Hotel</h3>
+                        <h3 th:if="${hid!=null}" class="card-title text-center mt-2">Update Hotel</h3>
+
+                        <form th:action="@{/hotel_save}" enctype="multipart/form-data" th:object="${hotel}" method="post" class="needs-validation"
+                              novalidate="">
+                            <input type="hidden" th:field="*{hid}"/>
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Hotel Name</label>
+                                    <input type="text" class="form-control" th:field="*{hname}" required=""/>
+                                    <div class="invalid-feedback">
+                                        What's your name?
+                                    </div>
+                                </div>
+<!--                                <div class="col-sm-6  col-md-6">-->
+<!--                                    <label class="col-sm-12   col-form-label">Logo</label>-->
+<!--                                    <input type="file" class="form-control" id="site-favicon" th:field="*{hlogo}"/>-->
+<!--                                    <div class="form-text text-muted">The image must have a maximum size of 1MB</div>-->
+<!--                                </div>-->
+                            </div>
+                            <!--                            name and logo end-->
+
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Phone</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+                                        <input type="text" class="form-control phone-number" th:field="*{hphone}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            What's your phone number?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12   col-form-label">Picture</label>
+                                    <input type="file" id="formdFile" name="pimg"/>
+                                    <div class="form-text text-muted">The image must have a maximum size of 1MB
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--                            Phone and photo end-->
+
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Email</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                                            </div>
+                                        </div>
+                                        <input type="email" class="form-control" th:field="*{hemail}" required=""/>
+                                        <div class="invalid-feedback">
+                                            What's your email?
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12   col-form-label">Password</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-lock"></i>
+                                            </div>
+                                        </div>
+                                        <input type="password" class="form-control pwstrength"
+                                               data-indicator="pwindicator" required="" th:field="*{hpassword}"/>
+                                        <div class="invalid-feedback">
+                                            Place give your password?
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--                         email and password end-->
+
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Check In</label>
+                                    <div class="form-group">
+                                        <input type="time" class="form-control " th:field="*{hcheckin}" required="">
+                                        <div class="invalid-feedback">
+                                            Select your checkIn time!!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Check Out</label>
+                                    <div class="form-group">
+                                        <input type="time" class="form-control " th:field="*{hcheckout}" required="">
+                                        <div class="invalid-feedback">
+                                            Select your checkOut time!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--                            checkIn and checkOut end-->
+
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Website</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control " th:field="*{hwebsite}" required="">
+                                        <div class="invalid-feedback">
+                                            Enter your website!!
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <label>Rating</label>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control " th:field="*{hrating}" required="">
+                                        <div class="invalid-feedback">
+                                            write hotel rating!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--                            website and rating end-->
+
+
+                            <div class="row">
+                                <div class="col-sm-12  col-md-12">
+                                    <label>Address</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control " th:field="*{haddress}" required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            Enter your real address!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!--        address end-->
+
+                            <div class="row">
+                                <div class="col-sm-12  col-md-12">
+                                    <label>Description</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control " th:field="*{hdescription}"
+                                                  required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            Enter hotel description!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--        description end-->
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <div class="form-group">
+                                        <label>Average Room Price</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <div class="input-group-text">
+                                                    $
+                                                </div>
+                                            </div>
+                                            <input type="text" class="form-control currency" th:field="*{haverageprice}"
+                                                   required="">
+                                            <div class="invalid-feedback">
+                                                Fill up the average price field?
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <div>
+                                        <label>Fetcher</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control " th:field="*{hfetcher}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--                            average price and fetcher end-->
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <div class="col-sm-12  col-md-12">
+                                        <label>Location</label>
+                                        <div>
+                                            <select class="form-select form-control" aria-label="Default select example"
+                                                    th:field="*{location}">
+                                                <option th:each="l:${locationList}" th:value="${l.lid}"
+                                                        th:text="${l.lname}">--Select--
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6  col-md-6">
+                                    <div class="col-sm-12  col-md-12">
+                                        <label>HotelFacilities</label>
+                                        <div>
+                                            <select class="form-select form-control" aria-label="Default select example"
+                                                    th:field="*{hotelFacilities}" multiple>
+                                                <option th:each="hf:${hFaciList}" th:value="${hf.hfacid}"
+                                                        th:text="${hf.hfacname}">--Select--
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--                            location and hotel facilities end-->
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-12  col-md-12">
+                                    <label>Policy</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control " th:field="*{hpolicy}" required=""></textarea>
+                                        <div class="invalid-feedback">
+                                            Enter hotel policy!!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--        policy end-->
+
+                            <div class="row mb-3 text-center">
+                                <label class="col-sm-6 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <button th:if="${hid==null}" type="submit" class="btn btn-primary ">Submit
+                                        Form
+                                    </button>
+                                    <button th:if="${hid!=null}" type="submit" class="btn btn-primary ">Update
+                                        Form
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- End app main Content -->
+<div th:insert=" footer.html">...</div>

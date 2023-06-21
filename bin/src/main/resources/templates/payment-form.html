@@ -1,0 +1,128 @@
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+
+<!-- Start app main Content -->
+<div class="main-content">
+    <section class="section">
+        <div class="row row-deck">
+            <div class="col-md-12 ">
+                <div class="card ">
+                    <div class="card-body m-5 col-12 col-md-11 col-lg-11">
+                        <h3 th:if="${pid==null}" class="card-title text-center mt-2">Payment</h3>
+                        <h3 th:if="${pid!=null}" class="card-title text-center mt-2">Update Payment</h3>
+
+                        <form th:action="@{/payment_save}" th:object="${payment}" method="post" class="needs-validation"
+                              novalidate="">
+                            <input type="hidden" th:field="*{pid}"/>
+
+                            <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Payment Type</label>
+                                    <input type="text" class="form-control" th:field="*{pType}" required=""/>
+                                    <div class="invalid-feedback">
+                                        What's your name?
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Account Details</label>
+                                    <input type="text" class="form-control" th:field="*{acDetails}" required=""/>
+                                    <div class="invalid-feedback">
+                                        What's your name?
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div>
+
+                                <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Amount</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <div class="input-group-text">
+                                                <i class="fas fa-phone"></i>
+                                            </div>
+                                        </div>
+
+                                        <input type="text" class="form-control phone-number" th:field="*{pAmount}"
+                                               required=""/>
+                                        <div class="invalid-feedback">
+                                            What's your phone number?
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-sm-6  col-md-6">
+                                    <label class="col-sm-12  col-form-label">Date</label>
+                                    <input type="text" class="form-control" th:field="*{pDate}" required=""/>
+                                    <div class="invalid-feedback">
+                                        What's your name?
+                                    </div>
+                                </div>
+                            </div>
+                                <div class="row">
+                                <div class="col-sm-6  col-md-6">
+                                    <div class="col-sm-12  col-md-12">
+                                        <label>Booking Id</label>
+                                        <div>
+                                            <select class="form-select form-control" aria-label="Default select example"
+                                                    th:field="*{booking}">
+                                                <option th:each="bl:${bookingList}" th:value="${bl.bid}"
+                                                        th:text="${bl.bTitle}">--Select--
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-sm-6  col-md-6">
+                                        <div class="col-sm-12  col-md-12">
+                                            <label>User Id</label>
+                                            <div>
+                                                <select class="form-select form-control" aria-label="Default select example"
+                                                        th:field="*{user}">
+                                                    <option th:each="ul:${userList}" th:value="${ul.uid}"
+                                                            th:text="${ul.uName}">--Select--
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                            <div class="row mb-3 text-center">
+                                <label class="col-sm-6 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <button th:if="${pid==null}" type="submit" class="btn btn-primary ">Submit
+                                        Form
+                                    </button>
+                                    <button th:if="${pid!=null}" type="submit" class="btn btn-primary ">Update
+                                        Form
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+</div>
+<!-- End app main Content -->
+<div th:insert=" footer.html">...</div>

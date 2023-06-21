@@ -1,0 +1,45 @@
+
+<div th:insert="header.html">...</div>
+<div th:insert="sidebar.html">...</div>
+
+        <!-- Start app main Content -->
+        <div class="main-content">
+            <section class="section">
+                <div class="row row-deck">
+                    <div class="col-md-12 ">
+                        <div class="card ">
+                            <div class="card-body  col-md-12 col-sm-12">
+                                <h3 class="text-center">All Room Type</h3>
+                                <!-- Default Table -->
+                                <table class="table ">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">Sl</th>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Description</th>
+                                        <th scope="col">Keyword</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="type:${allrtype}">
+                                        <td th:text="${type.rtid}"></td>
+                                        <td th:text="${type.rtName}"></td>
+                                        <td th:text="${type.rtDescription}"></td>
+                                        <td th:text="${type.rtKey}"></td>
+                                        <td>
+                                            <a th:href="@{'/delete_roomtype/'+${type.rtid}}" class="btn btn-danger">Delete</a>
+                                            <a th:href="@{'/edit_roomtype/'+${type.rtid}}" class="btn btn-success">Update</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!-- End Default Table Example -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- End app main Content -->
+<div th:insert=" footer.html">...</div>
